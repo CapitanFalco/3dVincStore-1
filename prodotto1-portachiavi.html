@@ -47,29 +47,48 @@
             background-color: #575757;
             transform: scale(1.1);
         }
-        .frame {
-            display: none;
-            background-color: #d3d3d3;
-            width: auto;
-            height: auto;
-            margin-top: 5px;
-            border: 2px solid #bbb;
-            text-align: center;
-            padding: 10px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+        .products-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            flex-wrap: wrap;
         }
-        .frame a {
+        .product {
+            width: 250px;
+            height: 350px;
+            margin-right: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .product img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+        .product h3 {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+        .product .buy-button {
+            background-color: #007BFF;
             color: white;
+            padding: 10px 15px;
+            text-align: center;
+            border-radius: 5px;
             text-decoration: none;
-            padding: 5px 10px;
-            display: block;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
         }
-        .frame a:hover {
-            background-color: #575757;
-            transform: scale(1.1);
+        .product .buy-button:hover {
+            background-color: #0056b3;
         }
         @media (max-width: 768px) {
             .logo-container {
@@ -82,6 +101,9 @@
             .menu a {
                 padding: 10px;
                 width: 100%;
+            }
+            .products-container {
+                flex-direction: column;
             }
         }
     </style>
@@ -97,24 +119,25 @@
         <a href="#contatti">Contatti</a>
         <a href="javascript:void(0);" id="prodottiLink">I Nostri Prodotti</a>
     </div>
-    <div id="frame" class="frame">
-        <a href="prodotto1-portachiavi.html">Portachiavi</a>
-        <a href="#">Prodotto 2</a>
-        <a href="#">Prodotto 3</a>
+
+    <!-- Sezione Prodotti senza scorrimento -->
+    <div class="products-container">
+        <div class="product">
+            <img src="path/to/icon1.jpg" alt="Icona Portachiavi">
+            <h3>Portachiavi Personalizzato</h3>
+            <a href="prodotto1-portachiavi.html" class="buy-button">Acquista Ora</a>
+        </div>
+        <div class="product">
+            <img src="path/to/icon2.jpg" alt="Icona Prodotto 2">
+            <h3>Prodotto 2</h3>
+            <a href="#" class="buy-button">Acquista Ora</a>
+        </div>
+        <div class="product">
+            <img src="path/to/icon3.jpg" alt="Icona Prodotto 3">
+            <h3>Prodotto 3</h3>
+            <a href="#" class="buy-button">Acquista Ora</a>
+        </div>
+        <!-- Aggiungi altri prodotti come sopra -->
     </div>
-    <script>
-        document.getElementById('prodottiLink').addEventListener('click', function(event) {
-            var frame = document.getElementById('frame');
-            var linkRect = event.target.getBoundingClientRect(); // Ottieni la posizione del link
-            
-            // Mostra o nascondi il menu in base al suo stato attuale
-            frame.style.display = (frame.style.display === 'none' || frame.style.display === '') ? 'block' : 'none';
-            
-            // Imposta la posizione del menu a discesa appena sotto il link e centrato
-            frame.style.top = (linkRect.bottom + window.scrollY) + 'px'; // Aggiungi l'offset di scroll per una corretta posizione
-            frame.style.left = (linkRect.left + linkRect.width / 2) + 'px'; // Centra il dropdown sotto il link
-            frame.style.transform = 'translateX(-50%)'; // Mantieni il dropdown centrato orizzontalmente
-        });
-    </script>
 </body>
 </html>
