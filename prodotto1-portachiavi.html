@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3dVinc-Portachiavi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        .logo-container {
+            width: 100%;
+            height: 100px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-container img {
+            max-height: 100%;
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .menu {
+            background-color: rgba(51, 51, 51, 0.8);
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .menu a {
+            padding: 14px 20px;
+            display: block;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .menu a:hover {
+            background-color: #575757;
+            transform: scale(1.1);
+        }
+        .frame {
+            display: none;
+            background-color: #d3d3d3;
+            width: auto;
+            height: auto;
+            margin-top: 5px;
+            border: 2px solid #bbb;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .frame a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            display: block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .frame a:hover {
+            background-color: #575757;
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .logo-container {
+                height: 80px;
+            }
+            .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .menu a {
+                padding: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="path/to/your/logo.jpg" alt="Inserire il logo">
+    </div>
+    <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#dove-trovarci">Dove Trovarci</a>
+        <a href="#contatti">Contatti</a>
+        <a href="javascript:void(0);" id="prodottiLink">I Nostri Prodotti</a>
+    </div>
+    <div id="frame" class="frame">
+        <a href="prodotto1-portachiavi.html">Portachiavi</a>
+        <a href="#">Prodotto 2</a>
+        <a href="#">Prodotto 3</a>
+    </div>
+    <script>
+        document.getElementById('prodottiLink').addEventListener('click', function(event) {
+            var frame = document.getElementById('frame');
+            var linkRect = event.target.getBoundingClientRect(); // Ottieni la posizione del link
+            
+            // Mostra o nascondi il menu in base al suo stato attuale
+            frame.style.display = (frame.style.display === 'none' || frame.style.display === '') ? 'block' : 'none';
+            
+            // Imposta la posizione del menu a discesa appena sotto il link e centrato
+            frame.style.top = (linkRect.bottom + window.scrollY) + 'px'; // Aggiungi l'offset di scroll per una corretta posizione
+            frame.style.left = (linkRect.left + linkRect.width / 2) + 'px'; // Centra il dropdown sotto il link
+            frame.style.transform = 'translateX(-50%)'; // Mantieni il dropdown centrato orizzontalmente
+        });
+    </script>
+</body>
+</html>
