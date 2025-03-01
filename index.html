@@ -97,12 +97,15 @@
     </div>
     <div id="frame" class="frame">
         <a href="prodotto1-portachiavi.html">Portachiavi</a>
-        <a href="#">Prodotto 2</a>
+        <a href="prodotto2-covers.html">Covers</a>
         <a href="#">Prodotto 3</a>
     </div>
     <script>
-        document.getElementById('prodottiLink').addEventListener('click', function(event) {
-            var frame = document.getElementById('frame');
+        var prodottiLink = document.getElementById('prodottiLink');
+        var frame = document.getElementById('frame');
+
+        // Mostra il menu quando il link "I Nostri Prodotti" è cliccato
+        prodottiLink.addEventListener('click', function(event) {
             var linkRect = event.target.getBoundingClientRect(); // Ottieni la posizione del link
             
             // Mostra o nascondi il menu in base al suo stato attuale
@@ -112,6 +115,11 @@
             frame.style.top = (linkRect.bottom + window.scrollY) + 'px'; // Aggiungi l'offset di scroll per una corretta posizione
             frame.style.left = (linkRect.left + linkRect.width / 2) + 'px'; // Centra il dropdown sotto il link
             frame.style.transform = 'translateX(-50%)'; // Mantieni il dropdown centrato orizzontalmente
+        });
+
+        // Nasconde il menu quando il cursore esce dall'area
+        frame.addEventListener('mouseleave', function() {
+            frame.style.display = 'none';
         });
     </script>
 </body>
