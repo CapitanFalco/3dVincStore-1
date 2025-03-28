@@ -69,6 +69,44 @@
             background-color: #575757;
             transform: scale(1.1);
         }
+        .footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .footer-section {
+            margin: 10px;
+        }
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin: 5px 0;
+        }
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: #bbb;
+        }
+        .footer-section img {
+            width: 30px;
+            margin: 5px;
+        }
         @media (max-width: 768px) {
             .logo-container {
                 height: 80px;
@@ -100,24 +138,41 @@
         <a href="prodotto2-covers.html">Covers</a>
         <a href="#">Prodotto 3</a>
     </div>
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contatti</h3>
+                <p>Indirizzo: Via E. Scarfolgio, 75 - Napoli</p>
+                <p>Telefono: +39 081 570 83 97</p>
+                <p>Email: info@acusticanapoli.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Negozio</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Dove Siamo</a></li>
+                    <li><a href="#">Showroom</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Social</h3>
+                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
+                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+                <a href="#"><img src="whatsapp-icon.png" alt="WhatsApp"></a>
+            </div>
+        </div>
+    </div>
     <script>
         var prodottiLink = document.getElementById('prodottiLink');
         var frame = document.getElementById('frame');
-
-        // Mostra il menu quando il link "I Nostri Prodotti" è cliccato
         prodottiLink.addEventListener('click', function(event) {
-            var linkRect = event.target.getBoundingClientRect(); // Ottieni la posizione del link
-            
-            // Mostra o nascondi il menu in base al suo stato attuale
+            var linkRect = event.target.getBoundingClientRect();
             frame.style.display = (frame.style.display === 'none' || frame.style.display === '') ? 'block' : 'none';
-            
-            // Imposta la posizione del menu a discesa appena sotto il link e centrato
-            frame.style.top = (linkRect.bottom + window.scrollY) + 'px'; // Aggiungi l'offset di scroll per una corretta posizione
-            frame.style.left = (linkRect.left + linkRect.width / 2) + 'px'; // Centra il dropdown sotto il link
-            frame.style.transform = 'translateX(-50%)'; // Mantieni il dropdown centrato orizzontalmente
+            frame.style.top = (linkRect.bottom + window.scrollY) + 'px';
+            frame.style.left = (linkRect.left + linkRect.width / 2) + 'px';
+            frame.style.transform = 'translateX(-50%)';
         });
-
-        // Nasconde il menu quando il cursore esce dall'area
         frame.addEventListener('mouseleave', function() {
             frame.style.display = 'none';
         });
